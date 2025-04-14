@@ -7,6 +7,10 @@
     "architecture",
     "---Setup---",
     "installation",
+    "---Cloud---",
+    "providers",
+    "aws",
+    "monitoring",
     "[Changelog](https://dflow.sh/changelog)"
   ]
 }
