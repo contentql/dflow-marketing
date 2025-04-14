@@ -4,7 +4,7 @@ import Image from 'next/image'
 import RichText from '@/components/RichText'
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import { Media } from '@/payload-types'
+import { Media, User } from '@/payload-types'
 
 export default async function blogDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
   const syncedParams = await params
@@ -55,7 +55,21 @@ export default async function blogDetailsPage({ params }: { params: Promise<{ sl
         </div>
 
         <h1 className="text-4xl font-bold mb-4">{blogData?.title}</h1>
-        <p className="text-sm text-muted-foreground mb-6">{formattedDate}</p>
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center">
+            <Image
+              height={1000}
+              width={1000}
+              className="size-10 rounded-full"
+              src={((blogData?.author as User)?.imageUrl as Media)?.url || ''}
+              alt="Avatar"
+            />
+            <div className="mx-2 font-semibold text-muted-foreground">
+              {(blogData?.author as User)?.displayName}
+            </div>
+          </div>
+          <span className="mx-1 text-muted-foreground">{formattedDate}</span>
+        </div>
 
         <RichText
           className="max-w-[48rem] mx-auto"
