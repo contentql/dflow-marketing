@@ -1,5 +1,5 @@
 {
   "title": "docs",
   "root": true,
-  "pages": ["---introduction---", "index", "[Changelog](https://dflow.sh/changelog)"]
+  "pages": ["---Introduction---", "index", "[Changelog](https://dflow.sh/changelog)"]
 }
