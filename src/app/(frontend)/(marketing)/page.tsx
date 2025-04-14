@@ -1,7 +1,5 @@
 import Analysis from '@/components/marketing/analysis'
 import CTA from '@/components/marketing/cta'
-import LanguageSupport from '@/components/marketing/lang-support'
-import Pricing from '@/components/marketing/pricing'
 import Wrapper from '@/components/global/wrapper'
 import Companies from '@/components/marketing/companies'
 import Features from '@/components/marketing/features'

@@ -6,8 +6,9 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { Media } from '@/payload-types'
 
-const BlogDetailsPage = async ({ params }: { params: { slug: string } }) => {
-  const slug = await params?.slug
+export default async function blogDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
+  const syncedParams = await params
+  const slug = syncedParams?.slug
   const payload = await getPayload({ config })
 
   const { docs } = await payload.find({
@@ -76,5 +77,3 @@ const BlogDetailsPage = async ({ params }: { params: { slug: string } }) => {
     </Wrapper>
   )
 }
-
-export default BlogDetailsPage
