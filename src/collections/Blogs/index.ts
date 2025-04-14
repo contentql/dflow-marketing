@@ -7,11 +7,15 @@ import {
 } from '@payloadcms/richtext-lexical'
 import { slugField } from '@/fields/slug'
 import type { CollectionConfig } from 'payload'
+import { revalidateBlog, revalidateBlogAfterDelete } from './hooks/revalidateBlog'
 
 export const Blogs: CollectionConfig = {
   slug: 'blogs',
   admin: {
     useAsTitle: 'title',
+  },
+  versions: {
+    drafts: true,
   },
   fields: [
     {
@@ -71,4 +75,8 @@ export const Blogs: CollectionConfig = {
     },
     ...slugField(),
   ],
+  hooks: {
+    afterChange: [revalidateBlog],
+    afterDelete: [revalidateBlogAfterDelete],
+  },
 }

@@ -6,11 +6,15 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 import type { CollectionConfig } from 'payload'
+import { revalidateChangelog, revalidateChangelogAfterDelete } from './hooks/revalidateChangelog'
 
 export const Changelog: CollectionConfig = {
   slug: 'changelog',
   admin: {
     useAsTitle: 'version',
+  },
+  versions: {
+    drafts: true,
   },
   fields: [
     {
@@ -36,4 +40,8 @@ export const Changelog: CollectionConfig = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [revalidateChangelog],
+    afterDelete: [revalidateChangelogAfterDelete],
+  },
 }
