@@ -1,0 +1,24 @@
+---
+title: Architecture
+description: Core Components of dFlow Application
+---
+
+## How is dFlow built
+
+When dFlow is installed, it will setup the following:
+
+- Built using **Next.js** for the frontend and backend API.
+- Uses **MongoDB** as the primary database to store user, server, and service
+  details. **PayloadCMS**
+- **Redis** is used for caching and fast data retrieval.
+- **BullMQ** (built on Redis) is used for queueing and managing long-running
+  tasks like server provisioning and service deployments.
+
+## Server connection & Setup
+
+- dFlow uses **node-ssh** (a library for SSH connections in Node.js) to connect
+  to the user’s server.
+- Once connected, dFlow executes automated scripts to:
+  - Install **Dokku** (a self-hosted PaaS like Heroku).
+  - Install **Netdata** (for real-time monitoring of the server).
+  - Install **Railpack** (a tool that simplifies server management).

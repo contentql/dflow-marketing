@@ -1,8 +1,10 @@
 import type { Config } from 'tailwindcss'
 import animate from 'tailwindcss-animate'
 import typography from '@tailwindcss/typography'
+import { createPreset } from 'fumadocs-ui/tailwind-plugin'
 
 export default {
+  presets: [createPreset()],
   darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -11,6 +13,9 @@ export default {
     './src/lib/**/*.{js,ts,jsx,tsx,mdx}',
     './src/utils/**/*.{js,ts,jsx,tsx,mdx}',
     './src/collections/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/fumadocs-ui/dist/**/*.js',
+    './content/**/*.mdx',
+    './mdx-components.tsx',
   ],
   theme: {
     extend: {

@@ -1,0 +1,57 @@
+---
+title: Providers
+description: Providers are the building blocks of your infrastructure. They allow you to
+  manage and provision resources across various cloud platforms and services.
+---
+
+In this section, we will explore the different providers available in our
+system, how to configure them, and best practices for using them effectively.
+
+### Connect to Providers
+
+To connect to a provider, Go to the
+[**Servers**](https://demo.dflow.sh/settings/servers) page and click on the
+**Add Server** button. You will be prompted to select a provider from the list
+of available providers. Once you select a provider, you will need to provide the
+necessary credentials and configuration details to establish a connection.
+
+### Supported Providers
+
+<Cards className='mb-5'>
+  <Card
+    title='AWS (Amazon Web Services)'
+    description='AWS is a comprehensive cloud computing platform that offers a wide range of services, including computing power, storage, and databases.'
+    icon={<AWS />}
+    href='/docs/aws'
+  />
+
+<Card
+  title={
+    <>
+      {' '}
+      GCP (Google Cloud Platform){' '}
+      <span className="ml-2 inline-block rounded-md bg-yellow-100 px-2 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100">
+        Coming Soon
+      </span>{' '}
+    </>
+  }
+  description="GCP is a suite of cloud computing services that runs on the same infrastructure that Google uses internally for its end-user products."
+  icon={<GCP />}
+/>
+
+  <Card
+    title={ <> Azure (Microsoft Azure) <span className='ml-2 inline-block rounded-md bg-yellow-100 px-2 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100'>
+        Coming Soon
+      </span>{' '} </>}
+    description='Azure is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through Microsoft-managed data centers.'
+    icon={<Azure />}
+  />
+  
+  <Card
+    title={ <> DigitalOcean <span className='ml-2 inline-block rounded-md bg-yellow-100 px-2 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100'>
+        Coming Soon
+      </span>{' '} </>}
+    description='DigitalOcean is a cloud infrastructure provider that offers cloud services to help businesses deploy and scale applications.'
+    icon={<DigitalOcean />}
+  />
+</Cards>

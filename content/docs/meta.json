@@ -1,0 +1,19 @@
+{
+  "title": "docs",
+  "root": true,
+  "pages": [
+    "---Introduction---",
+    "index",
+    "architecture",
+    "---Setup---",
+    "installation",
+    "---Cloud---",
+    "providers",
+    "aws",
+    "monitoring",
+    "---Server---",
+    "sshKeys",
+    "(Git-Sources)",
+    "[Changelog](https://dflow.sh/changelog)"
+  ]
+}
