@@ -9,7 +9,7 @@ export const NAV_LINKS = [
   },
   {
     name: 'Blog',
-    href: '/blogs',
+    href: '/blog',
   },
   {
     name: 'Roadmap',

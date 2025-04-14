@@ -12,31 +12,31 @@ export const FEATURES = [
     description:
       'Create and manage projects effortlessly. Deploy projects with a streamlined workflow.',
     icon: WandSparklesIcon,
-    image: '/images/feature-two.svg',
+    image: '/images/project-management.png',
   },
   {
     title: 'Service Deployment',
     description:
       'Create and manage services within projects. Deploy services with minimal configuration.',
     icon: ChartColumnBigIcon,
-    image: '/images/feature-one.svg',
+    image: '/images/deployements.png',
   },
   {
     title: 'Server Management',
     description: 'Initialize and configure servers. Manage multiple servers efficiently.',
     icon: DatabaseIcon,
-    image: '/images/feature-three.svg',
+    image: '/images/server-management.png',
   },
   {
     title: 'Domains Management',
     description: 'Attach and manage custom domains. Configure domain settings easily.',
     icon: TrendingUpIcon,
-    image: '/images/feature-four.svg',
+    image: '/images/domain-management.png',
   },
   {
     title: 'Monitoring & Logs',
     description: 'Track deployment logs and service health. View real-time monitoring stats.',
     icon: ZapIcon,
-    image: '/images/feature-five.svg',
+    image: '/images/monitoring.png',
   },
 ]
