@@ -11,6 +11,9 @@
     "providers",
     "aws",
     "monitoring",
+    "---Server---",
+    "sshKeys",
+    "(Git-Sources)",
     "[Changelog](https://dflow.sh/changelog)"
   ]
 }

@@ -1,0 +1,8 @@
+{
+  "defaultOpen": false,
+  "title": "Git Sources",
+  "description": "Git sources in DFlow",
+  "keywords": ["dFlow", "git", "sources"],
+  "root": false,
+  "pages": ["github", "gitlab", "bitbucket"]
+}
