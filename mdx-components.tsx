@@ -11,6 +11,8 @@ import Azure from '@/app/(docs)/components/ui/SVG/Azure'
 import DigitalOcean from '@/app/(docs)/components/ui/SVG/DigitalOcean'
 import GCP from '@/app/(docs)/components/ui/SVG/GoogleCloudPlatform'
 
+import ResponsiveIframe from '@/app/(docs)/components/ResponsiveIFrame'
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...defaultComponents,
@@ -28,5 +30,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Azure,
     DigitalOcean,
     GCP,
+    ResponsiveIframe,
   }
 }
