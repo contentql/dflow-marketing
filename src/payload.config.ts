@@ -12,6 +12,8 @@ import { Media } from './collections/Media'
 import { Changelog } from './collections/Changelog'
 import { Tags } from './collections/Tags'
 import { Blogs } from './collections/Blogs'
+import { s3Storage } from '@payloadcms/storage-s3'
+import { env } from 'env'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -46,5 +48,19 @@ export default buildConfig({
       },
     }),
     // storage-adapter-placeholder
+    s3Storage({
+      collections: {
+        media: true,
+      },
+      bucket: env.S3_BUCKET!,
+      config: {
+        credentials: {
+          accessKeyId: env.S3_ACCESS_KEY_ID!,
+          secretAccessKey: env.S3_SECRET_ACCESS_KEY!,
+        },
+        endpoint: env.S3_ENDPOINT,
+        region: env.S3_REGION,
+      },
+    }),
   ],
 })
