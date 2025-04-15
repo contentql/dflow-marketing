@@ -59,12 +59,12 @@ const Hero = () => {
           <Container delay={0.25} className="z-20">
             <div className="flex items-center justify-center mt-6 gap-x-4">
               <Link
-                href="https://demo.dFlow.sh"
+                href="https://railway.com/template/NNuPfr?referralCode=I9okFq"
                 target="_blank"
                 className="flex items-center gap-2 group"
               >
                 <Button size="lg">
-                  View Demo
+                  Deploy on Railway
                   <ArrowRightIcon className="size-4 group-hover:translate-x-1 transition-all duration-300" />
                 </Button>
               </Link>
