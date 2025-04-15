@@ -6,7 +6,7 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
-
+import { blurDataUrlsPlugin } from '@oversightstudio/blur-data-urls'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Changelog } from './collections/Changelog'
@@ -35,6 +35,16 @@ export default buildConfig({
   sharp,
   plugins: [
     payloadCloudPlugin(),
+    blurDataUrlsPlugin({
+      enabled: true,
+      collections: [Media],
+      // Blur data URLs Settings (Optional)
+      blurOptions: {
+        blur: 18,
+        width: 32,
+        height: 'auto',
+      },
+    }),
     // storage-adapter-placeholder
   ],
 })

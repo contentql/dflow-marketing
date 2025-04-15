@@ -9,11 +9,11 @@ const Analysis = () => {
       <Container>
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-medium !leading-snug">
-            All Your Projects. One Beautiful Dashboard.
+            Analyze. Optimize. Scale.
           </h2>
           <p className="text-base md:text-lg text-muted-foreground mt-4">
-            From setup to scale, manage every detail with a clean, responsive interface that keeps
-            everything you need just a click away.
+            Track deployments, monitor service health, and gain insights into how your
+            infrastructure performs — all from one unified dashboard.
           </p>
         </div>
       </Container>
@@ -29,18 +29,19 @@ const Analysis = () => {
             >
               <div className="absolute bottom-0 right-0 bg-primary w-1/4 h-1/4 blur-[8rem] z-20"></div>
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold">Campaign Insights</h3>
+                <h3 className="text-xl font-semibold">Deployment Insights</h3>
                 <p className="text-sm text-muted-foreground">
-                  Track your campaign performance with data-driven insights.
+                  Track how your deployments are performing with real-time success rates and
+                  durations.
                 </p>
 
                 <div className="space-y-4">
                   <div className="flex justify-between items-baseline">
                     <div>
-                      <div className="text-3xl font-semibold">$12,834</div>
+                      <div className="text-3xl font-semibold">92.3% Success Rate</div>
                       <div className="text-sm text-green-500 flex items-center gap-1 mt-2">
                         <TrendingUpIcon className="w-4 h-4" />
-                        +25% from last month
+                        +8% from last week
                       </div>
                     </div>
                     <div className="flex gap-2">
@@ -55,24 +56,29 @@ const Analysis = () => {
 
                   <div className="space-y-2">
                     <div className="grid grid-cols-4 text-sm text-muted-foreground py-2">
-                      <div>Campaign</div>
+                      <div>Project</div>
                       <div>Status</div>
-                      <div>Reach</div>
-                      <div>ROI</div>
+                      <div>Duration</div>
+                      <div>Success</div>
                     </div>
                     {[
-                      { name: 'Sales', status: 'Active', reach: '45K', roi: '+32%' },
-                      { name: 'Emails', status: 'Done', reach: '28K', roi: '+18%' },
-                      { name: 'Ads', status: 'Active', reach: '62K', roi: '+45%' },
-                    ].map((campaign) => (
+                      {
+                        name: 'Website V2',
+                        status: 'Completed',
+                        duration: '3m 15s',
+                        success: '100%',
+                      },
+                      { name: 'API Server', status: 'Deploying', duration: '1m 03s', success: '—' },
+                      { name: 'Auth Service', status: 'Failed', duration: '47s', success: '0%' },
+                    ].map((project) => (
                       <div
-                        key={campaign.name}
+                        key={project.name}
                         className="grid grid-cols-4 text-sm py-2 border-t border-border/50"
                       >
-                        <div>{campaign.name}</div>
-                        <div>{campaign.status}</div>
-                        <div>{campaign.reach}</div>
-                        <div className="font-semibold">{campaign.roi}</div>
+                        <div>{project.name}</div>
+                        <div>{project.status}</div>
+                        <div>{project.duration}</div>
+                        <div className="font-semibold">{project.success}</div>
                       </div>
                     ))}
                   </div>
@@ -92,18 +98,19 @@ const Analysis = () => {
             >
               <div className="absolute bottom-0 right-0 bg-sky-500 w-1/4 h-1/4 blur-[8rem] z-20"></div>
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold">Audience Metrics</h3>
+                <h3 className="text-xl font-semibold">Service Analytics</h3>
                 <p className="text-sm text-muted-foreground">
-                  Understand your audience behavior and engagement patterns.
+                  Gain visibility into how your services are performing across traffic, uptime, and
+                  conversions.
                 </p>
 
                 <div className="space-y-4">
                   <div className="flex justify-between items-baseline">
                     <div>
-                      <div className="text-3xl font-semibold">84,392</div>
+                      <div className="text-3xl font-semibold">153K Requests</div>
                       <div className="text-sm text-green-500 flex items-center gap-1 mt-2">
                         <TrendingUpIcon className="w-4 h-4" />
-                        +12% engagement rate
+                        +14% this month
                       </div>
                     </div>
                     <div className="flex gap-2">
@@ -116,18 +123,18 @@ const Analysis = () => {
                     </div>
                   </div>
 
-                  {/* Audience Table */}
+                  {/* Analytics Table */}
                   <div className="space-y-2">
                     <div className="grid grid-cols-4 text-sm text-muted-foreground py-2">
-                      <div>Channel</div>
-                      <div>Users</div>
-                      <div>Sessions</div>
-                      <div>Conv. Rate</div>
+                      <div>Service</div>
+                      <div>Uptime</div>
+                      <div>Traffic</div>
+                      <div>Error Rate</div>
                     </div>
                     {[
-                      { channel: 'Social', users: '32K', sessions: '45K', rate: '3.2%' },
-                      { channel: 'Email', users: '28K', sessions: '36K', rate: '4.5%' },
-                      { channel: 'Direct', users: '15K', sessions: '22K', rate: '5.1%' },
+                      { channel: 'Auth API', users: '99.9%', sessions: '56K', rate: '0.3%' },
+                      { channel: 'Webhook', users: '100%', sessions: '22K', rate: '0.0%' },
+                      { channel: 'File Storage', users: '98.4%', sessions: '31K', rate: '1.2%' },
                     ].map((metric) => (
                       <div
                         key={metric.channel}

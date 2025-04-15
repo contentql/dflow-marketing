@@ -30,6 +30,7 @@ export default function BlogCard({ blogData }: { blogData: Blog }) {
         className="object-cover w-full h-64"
         src={(blogData?.image as Media)?.url || ''}
         alt="Article"
+        blurDataURL={(blogData?.image as Media)?.blurDataUrl || undefined}
       />
 
       <div className="p-6">
@@ -58,6 +59,7 @@ export default function BlogCard({ blogData }: { blogData: Blog }) {
                 className="size-10 rounded-full"
                 src={((blogData?.author as User)?.imageUrl as Media)?.url || ''}
                 alt="Avatar"
+                blurDataURL={(blogData?.image as Media)?.blurDataUrl || undefined}
               />
               <div className="mx-2 font-semibold text-muted-foreground">
                 {(blogData?.author as User)?.displayName}

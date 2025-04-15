@@ -11,6 +11,9 @@ importers:
       '@number-flow/react':
         specifier: ^0.5.9
         version: 0.5.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@oversightstudio/blur-data-urls':
+        specifier: ^1.0.4
+        version: 1.0.4(payload@3.34.0(graphql@16.10.0)(typescript@5.7.3))(sharp@0.32.6)
       '@payloadcms/db-mongodb':
         specifier: 3.34.0
         version: 3.34.0(@aws-sdk/credential-providers@3.787.0)(payload@3.34.0(graphql@16.10.0)(typescript@5.7.3))
@@ -1029,6 +1032,12 @@ packages:
     peerDependencies:
       react: ^18 || ^19
       react-dom: ^18 || ^19
+
+  '@oversightstudio/blur-data-urls@1.0.4':
+    resolution: {integrity: sha512-9FMZlJVfVOVIBfXkyqWcDSvhvQlb9cvV47fMrCbwatj7+kfbcFmocXypnpN7yHiKVXsUGHEN6P0L+6kj/YNuFg==}
+    peerDependencies:
+      payload: ^3.15.0
+      sharp: ^0.32.6
 
   '@oxc-transform/binding-darwin-arm64@0.51.0':
     resolution: {integrity: sha512-HYZzgm/lCUAJP7Ya9IXbqb5t5gNo33tR9rmMr2RslgmkcxsEku1nCWDuZezdhYEuvrhnzwGnwmqK25dvwSCN4g==}
@@ -6279,6 +6288,11 @@ snapshots:
       number-flow: 0.5.7
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
+
+  '@oversightstudio/blur-data-urls@1.0.4(payload@3.34.0(graphql@16.10.0)(typescript@5.7.3))(sharp@0.32.6)':
+    dependencies:
+      payload: 3.34.0(graphql@16.10.0)(typescript@5.7.3)
+      sharp: 0.32.6
 
   '@oxc-transform/binding-darwin-arm64@0.51.0':
     optional: true

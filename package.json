@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@number-flow/react": "^0.5.9",
+    "@oversightstudio/blur-data-urls": "^1.0.4",
     "@payloadcms/db-mongodb": "3.34.0",
     "@payloadcms/next": "3.34.0",
     "@payloadcms/payload-cloud": "3.34.0",
