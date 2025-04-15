@@ -37,7 +37,6 @@ const Analysis = () => {
                   Seamless AWS EC2 Integration
                   <Link
                     href="/docs/aws" // update this path to your actual docs route
-                    target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:underline"
                   >
@@ -77,7 +76,6 @@ const Analysis = () => {
                   More Cloud Platforms Coming Soon
                   <Link
                     href="/docs/providers" // update this path to your actual docs route
-                    target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:underline"
                   >
