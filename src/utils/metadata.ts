@@ -16,17 +16,17 @@ interface MetadataProps {
 }
 
 export const generateMetadata = ({
-  title = `dFlow - AI-Powered Project Management & Team Collaboration`,
-  description = `dFlow is an intelligent project management platform that transforms how teams work together. Leverage AI to automate workflows, enhance collaboration, and boost productivity. Experience smarter project management today.`,
+  title = 'dFlow - Monitor & Optimize Projects with dFlow Analytics',
+  description = 'Visualize your project’s deployment performance, server usage, and audience engagement. Gain actionable insights to grow faster and smarter.',
   icons = [
     {
       rel: 'icon',
-      url: '/icons/icon-dark.png',
+      url: '/favicon.ico',
       media: '(prefers-color-scheme: light)',
     },
     {
       rel: 'icon',
-      url: '/icons/icon.png',
+      url: '/favicon.ico',
       media: '(prefers-color-scheme: dark)',
     },
   ],
