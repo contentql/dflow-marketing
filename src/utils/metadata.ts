@@ -16,8 +16,8 @@ interface MetadataProps {
 }
 
 export const generateMetadata = ({
-  title = `DFlow - AI-Powered Project Management & Team Collaboration`,
-  description = `DFlow is an intelligent project management platform that transforms how teams work together. Leverage AI to automate workflows, enhance collaboration, and boost productivity. Experience smarter project management today.`,
+  title = `dFlow - AI-Powered Project Management & Team Collaboration`,
+  description = `dFlow is an intelligent project management platform that transforms how teams work together. Leverage AI to automate workflows, enhance collaboration, and boost productivity. Experience smarter project management today.`,
   icons = [
     {
       rel: 'icon',

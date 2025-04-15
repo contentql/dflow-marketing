@@ -16,7 +16,7 @@ const Footer = () => {
                 height={32}
                 className="object-contain"
               />
-              <span className="text-base md:text-lg font-medium text-foreground">DFlow</span>
+              <span className="text-base md:text-lg font-medium text-foreground">dFlow</span>
             </div>
             <p className="text-muted-foreground mt-4 text-sm text-start">
               AI-powered platform that transforms your marketing workflow in seconds.
@@ -150,7 +150,7 @@ const Footer = () => {
       <Container delay={0.5} className="w-full relative mt-12 lg:mt-20">
         <div className="mt-8 md:flex md:items-center justify-center footer w-full">
           <p className="text-sm text-muted-foreground mt-8 md:mt-0">
-            &copy; {new Date().getFullYear()} DFlow. All rights reserved.
+            &copy; {new Date().getFullYear()} dFlow. All rights reserved.
           </p>
         </div>
       </Container>

@@ -19,7 +19,7 @@ const Navbar = () => {
                 height={32}
                 className="object-contain"
               />
-              <span className="text-xl font-semibold hidden lg:block">DFlow</span>
+              <span className="text-xl font-semibold hidden lg:block">dFlow</span>
             </Link>
           </div>
 
