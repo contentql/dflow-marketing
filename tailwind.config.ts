@@ -169,9 +169,7 @@ export default {
         '1/8': '12.5%',
       },
       fontFamily: {
-        heading: ['var(--font-heading)'],
-        subheading: ['var(--font-subheading)'],
-        base: ['var(--font-base)'],
+        mono: ['var(--font-geist-mono)'],
       },
     },
   },
