@@ -1,27 +1,24 @@
+import Ripple from '@/components/ui/ripple'
 import { cn } from '@/lib/cn'
-import { ArrowRightIcon } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
 import Container from '../global/container'
 import Icons from '../global/icons'
 import Images from '../global/images'
-import { Button } from '../ui/button'
-import Ripple from '@/components/ui/ripple'
 
 const SOCIAL_PLATFORMS = [
   {
-    icon: Icons.linkedin,
+    icon: Icons.azure,
     position: 'left-3',
     size: 'small',
     iconSize: 'small',
     className: 'hidden lg:flex',
   },
   { icon: Icons.github, position: 'left-2', size: 'medium', iconSize: 'medium' },
-  { icon: Icons.insta, position: 'left-1', size: 'large', iconSize: 'large' },
-  { icon: Icons.youtube, position: 'right-1', size: 'large', iconSize: 'large' },
-  { icon: Icons.x, position: 'right-2', size: 'medium', iconSize: 'medium' },
+  { icon: Icons.aws, position: 'left-1', size: 'large', iconSize: 'large' },
+  { icon: Icons.digitalOcean, position: 'right-1', size: 'large', iconSize: 'large' },
+  { icon: Icons.cloud, position: 'right-2', size: 'medium', iconSize: 'medium' },
   {
-    icon: Icons.facebook,
+    icon: Icons.reddit,
     position: 'right-3',
     size: 'small',
     iconSize: 'small',
@@ -97,14 +94,6 @@ const Integration = () => {
         <h2 className="text-2xl md:text-4xl lg:text-6xl font-heading font-semibold !leading-snug">
           Seamless Integrations for Effortless Workflows
         </h2>
-      </div>
-      <div className="flex flex-col items-center text-center max-w-3xl mx-auto lg:absolute lg:bottom-1/4 inset-x-0 z-20 mt-8 lg:mt-0">
-        <Link href="#">
-          <Button size="lg">
-            See all Integrations
-            <ArrowRightIcon className="size-4" />
-          </Button>
-        </Link>
       </div>
 
       <Container delay={0.3}>
