@@ -35,11 +35,16 @@ export default function BlogCard({ blogData }: { blogData: Blog }) {
 
       <div className="p-6">
         <div>
-          {blogData?.tag?.map((tag, index) => (
-            <span key={index} className="text-xs font-medium text-primary uppercase">
-              {(tag as Tag)?.tagTitle}
-            </span>
-          ))}
+          <div className="flex gap-3 flex-wrap">
+            {blogData?.tag?.map((tag, index) => (
+              <span
+                key={index}
+                className={`bg-[${(tag as Tag)?.background}] text-sm font-medium px-3 py-1 rounded-full`}
+              >
+                {(tag as Tag)?.tagTitle}
+              </span>
+            ))}
+          </div>
           <Link
             href={`/blog/${blogData?.slug}`}
             className="block mt-2 text-xl font-semibold transition-colors duration-300 transform hover:underline"
