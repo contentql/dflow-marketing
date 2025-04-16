@@ -10,21 +10,27 @@ export const revalidateBlog: CollectionAfterChangeHook<Blog> = ({
 }) => {
   if (!context.disableRevalidate) {
     if (doc._status === 'published') {
-      const path = `/blog/${doc.slug}`
+      const individualPath = `/blog/${doc.slug}`
+      const path = '/blog'
 
+      payload.logger.info(`Revalidating blog at individualPath: ${individualPath}`)
       payload.logger.info(`Revalidating blog at path: ${path}`)
 
       revalidatePath(path)
+      revalidatePath(individualPath)
       revalidateTag(`blog-${doc.slug}`)
     }
 
     // If the post was previously published, we need to revalidate the old path
     if (previousDoc._status === 'published' && doc._status !== 'published') {
-      const oldPath = `/blog/${previousDoc.slug}`
+      const oldIndividualPath = `/blog/${previousDoc.slug}`
+      const path = '/blog'
 
-      payload.logger.info(`Revalidating old blog at path: ${oldPath}`)
+      payload.logger.info(`Revalidating old blog at oldIndividualPath: ${oldIndividualPath}`)
+      payload.logger.info(`Revalidating old blog at path: ${path}`)
 
-      revalidatePath(oldPath)
+      revalidatePath(path)
+      revalidatePath(oldIndividualPath)
       revalidateTag(`blog-${doc.slug}`)
     }
   }
@@ -36,9 +42,11 @@ export const revalidateBlogAfterDelete: CollectionAfterDeleteHook<Blog> = ({
   req: { context },
 }) => {
   if (!context.disableRevalidate) {
-    const path = `/blog/${doc?.slug}`
+    const individualPath = `/blog/${doc?.slug}`
+    const path = '/blog'
 
     revalidatePath(path)
+    revalidatePath(individualPath)
     revalidateTag(`blog-${doc.slug}`)
   }
 
