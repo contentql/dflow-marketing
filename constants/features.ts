@@ -22,16 +22,16 @@ export const FEATURES = [
     image: '/images/deployements.png',
   },
   {
-    title: 'Server Management',
-    description: 'Initialize and configure servers. Manage multiple servers efficiently.',
-    icon: DatabaseIcon,
-    image: '/images/server-management.png',
-  },
-  {
     title: 'Domains Management',
     description: 'Attach and manage custom domains. Configure domain settings easily.',
     icon: TrendingUpIcon,
     image: '/images/domain-management.png',
+  },
+  {
+    title: 'Server Management',
+    description: 'Initialize and configure servers. Manage multiple servers efficiently.',
+    icon: DatabaseIcon,
+    image: '/images/server-management.png',
   },
   {
     title: 'Monitoring & Logs',
