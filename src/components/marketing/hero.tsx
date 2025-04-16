@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from '../global/container'
@@ -63,10 +62,12 @@ const Hero = () => {
                 target="_blank"
                 className="flex items-center gap-2 group"
               >
-                <Button size="lg">
-                  Deploy on Railway
-                  <ArrowRightIcon className="size-4 group-hover:translate-x-1 transition-all duration-300" />
-                </Button>
+                <Image
+                  alt="Deploy to railway"
+                  height={60}
+                  width={200}
+                  src={'https://railway.com/button.svg'}
+                />
               </Link>
             </div>
           </Container>

@@ -193,9 +193,11 @@ export interface Changelog {
  */
 export interface Tag {
   id: string;
+  background: string;
   tagTitle: string;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -353,9 +355,11 @@ export interface ChangelogSelect<T extends boolean = true> {
  * via the `definition` "tags_select".
  */
 export interface TagsSelect<T extends boolean = true> {
+  background?: T;
   tagTitle?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
