@@ -3,22 +3,50 @@ title: Architecture
 description: Core Components of dFlow Application
 ---
 
-## How is dFlow built
+<img src="/docs/dFlow-architecture.png" className="dark:invert" />
 
-When dFlow is installed, it will setup the following:
+## DFlow Architecture Overview
 
-- Built using **Next.js** for the frontend and backend API.
-- Uses **MongoDB** as the primary database to store user, server, and service
-  details. **PayloadCMS**
-- **Redis** is used for caching and fast data retrieval.
-- **BullMQ** (built on Redis) is used for queueing and managing long-running
-  tasks like server provisioning and service deployments.
+DFlow is designed to simplify app deployment and server orchestration without sacrificing power or flexibility. Below is an overview of how its core components work together:
 
-## Server connection & Setup
+### 🔐 1. Agentless Server Control via SSH
 
-- dFlow uses **node-ssh** (a library for SSH connections in Node.js) to connect
-  to the user’s server.
-- Once connected, dFlow executes automated scripts to:
-  - Install **Dokku** (a self-hosted PaaS like Heroku).
-  - Install **Netdata** (for real-time monitoring of the server).
-  - Install **Railpack** (a tool that simplifies server management).
+DFlow connects directly to your servers over SSH—no agents required. It securely provisions servers by installing and configuring necessary software, including:
+
+- **Dokku**: A lightweight Platform-as-a-Service (PaaS) for containerized app deployment
+- **Netdata**: A powerful real-time monitoring tool
+
+This approach keeps your infrastructure clean and transparent, while maintaining full control.
+
+### 🌐 2. Automated Proxy & DNS Configuration
+
+Every deployed app is automatically assigned a unique subdomain using nip.io, enabling instant DNS resolution. SSL certificates are provisioned via Let’s Encrypt, ensuring secure, HTTPS-ready deployments out of the box.
+
+### 🚀 3. Build & Deployment Pipeline
+
+Applications are containerized using Docker, with support for both:
+
+- Custom **Dockerfiles**
+- **Railpack** logic (for simplified builds)
+
+All builds are performed directly on your server, eliminating the need for remote CI/CD and making deployments fast and developer-friendly.
+
+### ☁️ 4. Cloud-Native Autoscaling (Coming Soon)
+
+DFlow is introducing a novel approach to autoscaling that avoids complex container orchestration layers. Instead, based on traffic or custom triggers, DFlow will:
+
+- Provision a new VPS on your AWS account
+- Install Dokku and connect it to your DFlow dashboard
+- Register the instance for load-aware app distribution
+
+This makes scaling intuitive, cost-effective, and infrastructure-agnostic.
+
+### 📈 5. Integrated Monitoring & Logs
+
+With Netdata installed by default, every server offers full visibility into:
+
+- Real-time system metrics (CPU, memory, disk, etc.)
+- App-specific logs and resource usage
+- Alerting and historical trends
+
+All available directly from the DFlow dashboard.
