@@ -1,9 +1,8 @@
+import { OrbitingCircles } from '@/components/ui/orbiting-circles'
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from '../global/container'
 import Icons from '../global/icons'
-import { Button } from '../ui/button'
-import { OrbitingCircles } from '@/components/ui/orbiting-circles'
 
 const Hero = () => {
   return (

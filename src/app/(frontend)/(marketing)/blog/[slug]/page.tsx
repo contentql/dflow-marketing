@@ -1,10 +1,9 @@
 import Wrapper from '@/components/global/wrapper'
-import React from 'react'
-import Image from 'next/image'
 import RichText from '@/components/RichText'
-import { getPayload } from 'payload'
-import config from '@payload-config'
 import { Media, Tag, User } from '@/payload-types'
+import config from '@payload-config'
+import Image from 'next/image'
+import { getPayload } from 'payload'
 
 export default async function blogDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
   const syncedParams = await params
@@ -44,15 +43,17 @@ export default async function blogDetailsPage({ params }: { params: Promise<{ sl
   return (
     <Wrapper className="py-20 relative">
       <div className="max-w-5xl mx-auto">
-        <div className="mb-8 rounded-lg overflow-hidden aspect-video">
-          <Image
-            src={(blogData?.image as Media)?.url || ''}
-            alt={(blogData?.image as Media)?.alt || 'BlogImage'}
-            width={1000}
-            height={1000}
-            className="w-full h-auto object-cover"
-            blurDataURL={(blogData?.image as Media)?.blurDataUrl || undefined}
-          />
+        <div className="mb-8 rounded-lg overflow-hidden w-full aspect-video relative">
+          {blogData?.image && (
+            <Image
+              src={(blogData.image as Media)?.url || ''}
+              alt={(blogData.image as Media)?.alt || 'Blog Image'}
+              fill
+              className="object-cover"
+              placeholder="blur"
+              blurDataURL={(blogData.image as Media)?.blurDataUrl || undefined}
+            />
+          )}
         </div>
 
         <h1 className="text-4xl font-bold mb-4">{blogData?.title}</h1>
@@ -77,9 +78,10 @@ export default async function blogDetailsPage({ params }: { params: Promise<{ sl
             {blogData?.tag?.map((tag, index) => (
               <span
                 key={index}
-                className={`bg-[${(tag as Tag)?.background}] text-sm font-medium px-3 py-1 rounded-full`}
+                style={{ backgroundColor: (tag as Tag)?.background }}
+                className="text-sm font-medium px-3 py-1 rounded-full"
               >
-                {(tag as Tag)?.tagTitle}
+                {(tag as Tag)?.tagTitle?.toUpperCase()}
               </span>
             ))}
           </div>
