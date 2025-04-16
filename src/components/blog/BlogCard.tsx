@@ -39,9 +39,10 @@ export default function BlogCard({ blogData }: { blogData: Blog }) {
             {blogData?.tag?.map((tag, index) => (
               <span
                 key={index}
-                className={`bg-[${(tag as Tag)?.background}] text-sm font-medium px-3 py-1 rounded-full`}
+                style={{ backgroundColor: (tag as Tag)?.background }}
+                className={`text-sm font-medium px-3 py-1 rounded-full`}
               >
-                {(tag as Tag)?.tagTitle}
+                {(tag as Tag)?.tagTitle?.toUpperCase()}
               </span>
             ))}
           </div>
@@ -50,9 +51,9 @@ export default function BlogCard({ blogData }: { blogData: Blog }) {
             className="block mt-2 text-xl font-semibold transition-colors duration-300 transform hover:underline"
             role="link"
           >
-            {blogData?.title}
+            <span className="line-clamp-1">{blogData?.title}</span>
           </Link>
-          <p className="mt-2 text-sm text-muted-foreground">{blogData?.description}</p>
+          <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{blogData?.description}</p>
         </div>
 
         <div className="mt-4">
