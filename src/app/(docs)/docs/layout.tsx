@@ -1,9 +1,9 @@
 import { DocsLayout } from 'fumadocs-ui/layout'
 import type { ReactNode } from 'react'
 
-import { pageTree } from './source'
-import NavTitle from '../components/NavTitle'
 import { Globe } from 'lucide-react'
+import NavTitle from '../components/NavTitle'
+import { pageTree } from './source'
 
 export default function RootDocsLayout({ children }: { children: ReactNode }) {
   return (
