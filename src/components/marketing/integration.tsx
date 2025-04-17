@@ -73,7 +73,7 @@ const Integration = () => {
   }
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full py-20 scale-">
+    <div className="relative flex flex-col items-center justify-center w-full scale-">
       <Container className="relative">
         <div className="relative flex flex-col lg:hidden items-center justify-center overflow-visible">
           <div className="absolute top-1/2 -translate-y-1/2 right-1/4 w-3/5 h-14 lg:h-20 bg-gradient-to-r from-[#a88ee6] to-primary rounded-full -rotate-12 blur-[6.5rem] -z-10"></div>

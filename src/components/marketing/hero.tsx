@@ -45,7 +45,7 @@ const Hero = () => {
           </Container>
           <Container delay={0.15}>
             <h1 className="text-4xl md:text-4xl lg:text-7xl font-bold text-center !leading-tight max-w-4xl mx-auto">
-              Your All-in-One DevOps Platform
+              Streamline Your Infra with One Powerful PaaS
             </h1>
           </Container>
           <Container delay={0.2}>
@@ -55,7 +55,7 @@ const Hero = () => {
             </p>
           </Container>
           <Container delay={0.25} className="z-20">
-            <div className="flex items-center justify-center mt-6 gap-x-4">
+            <div className="flex justify-center mt-6">
               <Link
                 href="https://railway.com/template/NNuPfr?referralCode=I9okFq"
                 target="_blank"

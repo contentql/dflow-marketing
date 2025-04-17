@@ -1,15 +1,16 @@
 'use client'
 
+import Particles from '@/components/ui/particles'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
 import Container from '../global/container'
 import { Button } from '../ui/button'
-import Particles from '@/components/ui/particles'
 
 const CTA = () => {
   return (
-    <div className="relative flex flex-col items-center justify-center w-full py-20">
-      <Container className="py-20 max-w-6xl mx-auto">
+    <div className="relative py-20 flex flex-col items-center justify-center w-full">
+      <Container className="max-w-6xl mx-auto">
         <div className="relative flex flex-col items-center justify-center py-12 lg:py-20 px-0 rounded-2xl lg:rounded-3xl bg-background/20 text-center border border-foreground/20 overflow-hidden">
           <Particles
             refresh
@@ -49,9 +50,19 @@ const CTA = () => {
             Start building, deploying, and scaling in minutes — with a platform that simplifies your
             entire DevOps workflow.
           </p>
-          <Link target="_blank" href="https://demo.dFlow.sh" className="mt-8">
-            <Button size="lg">View Demo</Button>
-          </Link>
+          <div className="flex flex-row gap-4 mt-4 items-center justify-center">
+            <Link href="https://railway.com/template/NNuPfr?referralCode=I9okFq" target="_blank">
+              <Image
+                alt="Deploy to railway"
+                height={56}
+                width={180}
+                src={'https://railway.com/button.svg'}
+              />
+            </Link>
+            <Link target="_blank" href="https://demo.dFlow.sh">
+              <Button size="lg">View Demo</Button>
+            </Link>
+          </div>
         </div>
       </Container>
     </div>
