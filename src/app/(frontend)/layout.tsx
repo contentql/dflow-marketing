@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: 'dFlow',
     images: [
       {
-        url: '/images/og-image.png',
+        url: '/images/og-images/og-image.png',
         width: 1200,
         height: 630,
       },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: 'dFlow',
     description:
       'dFlow is a modern PaaS platform that lets you deploy services, manage infrastructure, view logs, connect domains, and scale effortlessly — all from a unified DevOps dashboard.',
-    images: ['/images/og-image.png'],
+    images: ['/images/og-images/og-image.png'],
   },
   metadataBase: new URL(env.NEXT_PUBLIC_WEBSITE_URL),
 }
