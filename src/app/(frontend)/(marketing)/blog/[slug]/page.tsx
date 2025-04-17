@@ -2,12 +2,12 @@ import Wrapper from '@/components/global/wrapper'
 import RichText from '@/components/RichText'
 import { Media, Tag, User } from '@/payload-types'
 import config from '@payload-config'
+import { env } from 'env'
+import { Metadata } from 'next'
 import Image from 'next/image'
 import { getPayload } from 'payload'
 
-export default async function blogDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
-  const syncedParams = await params
-  const slug = syncedParams?.slug
+async function getBlog(slug: string) {
   const payload = await getPayload({ config })
 
   const { docs } = await payload.find({
@@ -19,7 +19,45 @@ export default async function blogDetailsPage({ params }: { params: Promise<{ sl
       },
     },
   })
-  const blogData = docs?.at(0)
+  return docs?.at(0)
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}): Promise<Metadata> {
+  const blogData = await getBlog(params.slug)
+
+  return {
+    title: blogData?.title,
+    description: blogData?.description,
+    openGraph: {
+      title: blogData?.title,
+      description: blogData?.description,
+      url: `${env.NEXT_PUBLIC_WEBSITE_URL}/blog/${params.slug}`,
+      images: [
+        {
+          url: (blogData?.image as Media)?.url || '/favicon',
+          width: 1200,
+          height: 630,
+        },
+      ],
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: blogData?.title,
+      description: blogData?.description,
+      images: [(blogData?.image as Media)?.url || '/favicon'],
+    },
+  }
+}
+
+export default async function blogDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
+  const syncedParams = await params
+  const slug = syncedParams?.slug
+  const blogData = await getBlog(slug)
 
   const localDate = new Date(blogData?.createdAt ?? '')
 
