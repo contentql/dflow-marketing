@@ -25,9 +25,11 @@ async function getBlog(slug: string) {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }): Promise<Metadata> {
-  const blogData = await getBlog(params.slug)
+  const syncedParams = await params
+  const slug = syncedParams?.slug
+  const blogData = await getBlog(slug)
 
   return {
     title: blogData?.title,
@@ -35,7 +37,7 @@ export async function generateMetadata({
     openGraph: {
       title: blogData?.title,
       description: blogData?.description,
-      url: `${env.NEXT_PUBLIC_WEBSITE_URL}/blog/${params.slug}`,
+      url: `${env.NEXT_PUBLIC_WEBSITE_URL}/blog/${slug}`,
       images: [
         {
           url: (blogData?.image as Media)?.url || '/favicon',
