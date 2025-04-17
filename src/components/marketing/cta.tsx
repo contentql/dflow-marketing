@@ -9,7 +9,7 @@ import { Button } from '../ui/button'
 
 const CTA = () => {
   return (
-    <div className="relative py-20 flex flex-col items-center justify-center w-full">
+    <div className="relative lg:-mt-20 flex flex-col items-center justify-center w-full">
       <Container className="max-w-6xl mx-auto">
         <div className="relative flex flex-col items-center justify-center py-12 lg:py-20 px-0 rounded-2xl lg:rounded-3xl bg-background/20 text-center border border-foreground/20 overflow-hidden">
           <Particles
