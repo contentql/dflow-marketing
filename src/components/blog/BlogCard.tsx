@@ -40,7 +40,7 @@ export default function BlogCard({ blogData }: { blogData: Blog }) {
               <span
                 key={index}
                 style={{ backgroundColor: (tag as Tag)?.background }}
-                className={`text-sm font-medium px-3 py-1 rounded-full`}
+                className={`text-xs font-medium px-2 py-1 rounded-full`}
               >
                 {(tag as Tag)?.tagTitle}
               </span>
