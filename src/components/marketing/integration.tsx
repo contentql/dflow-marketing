@@ -91,7 +91,7 @@ const Integration = () => {
       </Container>
 
       <div className="flex flex-col items-center text-center max-w-3xl mx-auto lg:absolute lg:top-1/4 inset-x-0 my-12 lg:mt-0">
-        <h2 className="text-2xl md:text-4xl lg:text-6xl font-heading font-semibold !leading-snug">
+        <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-semibold !leading-snug">
           Seamless Integrations for Effortless Workflows
         </h2>
       </div>

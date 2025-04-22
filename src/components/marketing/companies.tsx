@@ -6,7 +6,9 @@ const Companies = () => {
     <div className="relative flex flex-col items-center justify-center w-full py-20 mt-16 companies overflow-hidden">
       <Container>
         <div className="flex flex-col items-center justify-center">
-          <h4 className="text-2xl lg:text-4xl font-medium">Trusted by leading brands</h4>
+          <h4 className="text-2xl md:text-4xl lg:text-5xl font-medium">
+            Trusted by leading brands
+          </h4>
         </div>
       </Container>
 
