@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useMemo, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-
+import tinycolor from 'tinycolor2'
 export default function RoadmapClient({ issues }: { issues: any[] }) {
   const [selectedLabels, setSelectedLabels] = useState<string[]>([])
 
@@ -99,15 +99,22 @@ export default function RoadmapClient({ issues }: { issues: any[] }) {
                 </a>
 
                 <div className="flex flex-wrap gap-2">
-                  {issue.labels.map((label: any, index: number) => (
-                    <span
-                      key={index}
-                      className="text-xs px-2 py-1 rounded-full text-white"
-                      style={{ backgroundColor: `#${label?.color}` }}
-                    >
-                      {label.name}
-                    </span>
-                  ))}
+                  {issue.labels.map((label: any, index: number) => {
+                    const bgColor = `#${label?.color}`
+                    const isLight = tinycolor(bgColor).isLight()
+
+                    const textColorClass = isLight ? 'text-accent-foreground' : 'text-foreground'
+
+                    return (
+                      <span
+                        key={index}
+                        className={`text-xs px-2 py-1 rounded-full ${textColorClass}`}
+                        style={{ backgroundColor: bgColor }}
+                      >
+                        {label.name}
+                      </span>
+                    )
+                  })}
                 </div>
 
                 {issue.body && (
