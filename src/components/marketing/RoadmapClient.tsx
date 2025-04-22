@@ -2,7 +2,8 @@
 
 import Image from 'next/image'
 import { useMemo, useState } from 'react'
-
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 export default function RoadmapClient({ issues }: { issues: any[] }) {
   const [activeTab, setActiveTab] = useState('All')
 
@@ -51,7 +52,14 @@ export default function RoadmapClient({ issues }: { issues: any[] }) {
           >
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1 space-y-2">
-                <h3 className="text-xl font-semibold">{issue.title}</h3>
+                <a
+                  href={issue.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xl font-semibold hover:underline"
+                >
+                  {issue.title}
+                </a>
 
                 <div className="flex flex-wrap gap-2">
                   {issue.labels.map((label: any, index: number) => (
@@ -66,22 +74,47 @@ export default function RoadmapClient({ issues }: { issues: any[] }) {
                 </div>
 
                 {issue.body && (
-                  <p className=" text-muted-foreground whitespace-pre-line">{issue.body}</p>
+                  <div className="prose prose-sm dark:prose-invert text-muted-foreground">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{issue.body}</ReactMarkdown>
+                  </div>
                 )}
 
                 <p className="text-sm text-muted-foreground">
-                  #{issue.number} opened by <span className="font-medium">{issue.user.login}</span>
+                  <a
+                    href={issue.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold hover:underline"
+                  >
+                    #{issue.number}
+                  </a>{' '}
+                  opened by{' '}
+                  <a
+                    href={issue.user.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium hover:underline"
+                  >
+                    {issue.user.login}
+                  </a>
                 </p>
               </div>
 
               {issue.assignee && (
-                <Image
-                  alt={issue.assignee.login}
-                  className="size-8 rounded-full border"
-                  height={1000}
-                  width={1000}
-                  src={issue.assignee.avatar_url}
-                />
+                <a
+                  href={issue.assignee.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={issue.assignee.login}
+                >
+                  <Image
+                    alt={issue.assignee.login}
+                    className="size-8 rounded-full border"
+                    height={1000}
+                    width={1000}
+                    src={issue.assignee.avatar_url}
+                  />
+                </a>
               )}
             </div>
           </div>
