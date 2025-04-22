@@ -12,6 +12,9 @@ const withMDX = createMDX({
 const nextConfig = {
   // Your Next.js config here
   editor: lexicalEditor(),
+  images: {
+    domains: ['avatars.githubusercontent.com'],
+  },
 }
 
 export default withPayload(withMDX(nextConfig), { devBundleServerPackages: false })
