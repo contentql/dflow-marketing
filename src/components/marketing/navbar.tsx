@@ -1,9 +1,9 @@
-import Link from 'next/link'
-import { NAV_LINKS } from 'constants/links'
 import Wrapper from '@/components/global/wrapper'
 import { Button } from '@/components/ui/button'
-import MobileMenu from './mobile-menu'
+import { NAV_LINKS } from 'constants/links'
 import Image from 'next/image'
+import Link from 'next/link'
+import MobileMenu from './mobile-menu'
 
 const Navbar = () => {
   return (
@@ -35,10 +35,10 @@ const Navbar = () => {
 
           <div className="flex items-center gap-4">
             <Link href="https://discord.gg/5w7JUQYaAD" target="_blank" className="hidden lg:block">
-              <Button variant={'outline'}>
+              <Button variant={'outline'} className="group">
                 <svg
                   role="img"
-                  className="h-6 w-6 fill-white"
+                  className="h-6 w-6 fill-white group-hover:fill-accent-foreground"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
