@@ -1,50 +1,87 @@
 'use client'
-
+import { AnimatePresence, motion } from 'framer-motion'
+import { Check } from 'lucide-react'
 import Image from 'next/image'
 import { useMemo, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+
 export default function RoadmapClient({ issues }: { issues: any[] }) {
-  const [activeTab, setActiveTab] = useState('All')
+  const [selectedLabels, setSelectedLabels] = useState<string[]>([])
 
   const allLabels = useMemo(() => {
     const labels = new Set<string>()
     issues.forEach((issue) => {
       issue.labels.forEach((label: any) => labels.add(label.name))
     })
-    return ['All', ...Array.from(labels)]
+    return Array.from(labels)
   }, [issues])
 
+  const handleLabelChange = (label: string) => {
+    setSelectedLabels((prev) =>
+      prev.includes(label) ? prev.filter((l) => l !== label) : [...prev, label],
+    )
+  }
+
   const filteredIssues = useMemo(() => {
-    if (activeTab === 'All') return issues
-    return issues.filter((issue) => issue.labels.some((label: any) => label.name === activeTab))
-  }, [activeTab, issues])
+    if (selectedLabels.length === 0) return issues
+    return issues.filter((issue) =>
+      issue.labels.some((label: any) => selectedLabels.includes(label.name)),
+    )
+  }, [selectedLabels, issues])
 
   return (
     <>
-      <ul className="flex flex-wrap text-sm font-medium text-center text-muted-foreground border-b border-border">
-        {allLabels.map((label) => (
-          <li key={label} className="me-2">
-            <button
-              onClick={() => setActiveTab(label)}
-              className={`inline-block p-4 rounded-lg transition-colors ${
-                activeTab === label
-                  ? 'text-primary bg-card font-semibold'
-                  : 'hover:text-muted-foreground hover:bg-muted'
+      <div className="flex flex-wrap gap-3 py-4 border-b border-border">
+        {allLabels.map((label) => {
+          const isSelected = selectedLabels.includes(label)
+          return (
+            <motion.div
+              key={label}
+              onClick={() => handleLabelChange(label)}
+              className={`flex items-center gap-2 cursor-pointer select-none rounded-full border border-border px-4 py-1.5 text-sm transition-all hover:shadow-md ${
+                isSelected
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-background text-muted-foreground'
               }`}
+              animate={{
+                scale: isSelected ? 1.05 : 1,
+              }}
+              transition={{
+                type: 'spring',
+                stiffness: 300,
+                damping: 20,
+              }}
             >
-              {label}
-            </button>
-          </li>
-        ))}
-      </ul>
+              <span>{label}</span>
+              <AnimatePresence>
+                {isSelected && (
+                  <motion.span
+                    key="check"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0, opacity: 0 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 500,
+                      damping: 30,
+                      mass: 0.5,
+                    }}
+                  >
+                    <Check className="h-4 w-4" strokeWidth={2} />
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          )
+        })}
+      </div>
 
       <div className="pt-6 space-y-4">
         {filteredIssues.length === 0 && (
-          <p className="text-center text-muted-foreground">
-            No issues found for &ldquo;{activeTab}&rdquo;
-          </p>
+          <p className="text-center text-muted-foreground">No issues found for selected filters.</p>
         )}
+
         {filteredIssues.map((issue) => (
           <div
             key={issue.id}
