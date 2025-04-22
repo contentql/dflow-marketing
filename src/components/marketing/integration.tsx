@@ -80,7 +80,7 @@ const Integration = () => {
 
           <div className="max-w-sm w-full h-auto mx-auto mt-8">
             <Image
-              src="/images/integration.svg"
+              src="/images/integrations.png"
               alt="Integration"
               width={1000}
               height={1000}
@@ -90,7 +90,7 @@ const Integration = () => {
         </div>
       </Container>
 
-      <div className="flex flex-col items-center text-center max-w-3xl mx-auto lg:absolute lg:top-1/4 inset-x-0 mt-12 lg:mt-0">
+      <div className="flex flex-col items-center text-center max-w-3xl mx-auto lg:absolute lg:top-1/4 inset-x-0 my-12 lg:mt-0">
         <h2 className="text-2xl md:text-4xl lg:text-6xl font-heading font-semibold !leading-snug">
           Seamless Integrations for Effortless Workflows
         </h2>
@@ -105,7 +105,7 @@ const Integration = () => {
           </div>
 
           <div className="absolute z-20 flex items-center justify-center group">
-            <Images.logo className="size-24 group-hover:scale-110 transition-all duration-500" />
+            <Images.dflow className="size-24 group-hover:scale-110 transition-all duration-500" />
           </div>
 
           {SOCIAL_PLATFORMS.map((platform, index) => (
