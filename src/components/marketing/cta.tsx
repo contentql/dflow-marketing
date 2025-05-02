@@ -2,9 +2,9 @@
 
 import Particles from '@/components/ui/particles'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import Link from 'next/link'
 import Container from '../global/container'
+import DeployButton from '../global/DeployButton'
 import { Button } from '../ui/button'
 
 const CTA = () => {
@@ -51,13 +51,11 @@ const CTA = () => {
             entire DevOps workflow.
           </p>
           <div className="flex flex-row gap-4 mt-4 items-center justify-center">
-            <Link href="https://railway.com/template/NNuPfr?referralCode=I9okFq" target="_blank">
-              <Image
-                alt="Deploy to railway"
-                height={56}
-                width={180}
-                src={'https://railway.com/button.svg'}
-              />
+            <Link
+              href="https://demo.dflow.sh/templates/compose?templateId=68122108205912cbc9397ec8"
+              target="_blank"
+            >
+              <DeployButton />
             </Link>
             <Link target="_blank" href="https://demo.dFlow.sh">
               <Button size="lg">View Demo</Button>

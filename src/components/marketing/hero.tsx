@@ -2,6 +2,7 @@ import { OrbitingCircles } from '@/components/ui/orbiting-circles'
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from '../global/container'
+import DeployButton from '../global/DeployButton'
 import Icons from '../global/icons'
 
 const Hero = () => {
@@ -57,16 +58,11 @@ const Hero = () => {
           <Container delay={0.25} className="z-20">
             <div className="flex justify-center mt-6">
               <Link
-                href="https://railway.com/template/NNuPfr?referralCode=I9okFq"
+                href="https://demo.dflow.sh/templates/compose?templateId=68122108205912cbc9397ec8"
                 target="_blank"
                 className="flex items-center gap-2 group"
               >
-                <Image
-                  alt="Deploy to railway"
-                  height={60}
-                  width={200}
-                  src={'https://railway.com/button.svg'}
-                />
+                <DeployButton />
               </Link>
             </div>
           </Container>

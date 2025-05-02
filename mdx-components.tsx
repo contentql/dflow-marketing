@@ -12,6 +12,7 @@ import DigitalOcean from '@/app/(docs)/components/ui/SVG/DigitalOcean'
 import GCP from '@/app/(docs)/components/ui/SVG/GoogleCloudPlatform'
 
 import ResponsiveIframe from '@/app/(docs)/components/ResponsiveIFrame'
+import DeployButton from '@/components/global/DeployButton'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -31,5 +32,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     DigitalOcean,
     GCP,
     ResponsiveIframe,
+    DeployButton,
   }
 }
