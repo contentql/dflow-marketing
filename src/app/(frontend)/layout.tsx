@@ -1,5 +1,6 @@
 import { Toaster } from '@/components/ui/sonner'
 import { cn } from '@/lib/cn'
+import Provider from '@/trpc/Provider'
 import { env } from 'env'
 import { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
@@ -60,7 +61,7 @@ export default function RootLayout({
         )}
       >
         <Toaster richColors theme="dark" position="top-right" />
-        {children}
+        <Provider> {children}</Provider>
       </body>
     </html>
   )

@@ -1,4 +1,6 @@
+import { UserAccountVerification } from '@/emails/verify-email'
 import { slugField } from '@/fields/slug'
+import { env } from 'env'
 import type { CollectionConfig } from 'payload'
 
 export const Users: CollectionConfig = {
@@ -9,6 +11,17 @@ export const Users: CollectionConfig = {
   auth: {
     cookies: {
       secure: true,
+    },
+    verify: {
+      generateEmailHTML: ({ token, user }) => {
+        return UserAccountVerification({
+          actionLabel: 'verify your account',
+          buttonText: 'Verify Account',
+          userName: user.username,
+          image: user.avatar,
+          href: `${env.NEXT_PUBLIC_WEBSITE_URL}/verify-email?token=${token}&id=${user.id}`,
+        })
+      },
     },
   },
   fields: [
@@ -59,6 +72,10 @@ export const Users: CollectionConfig = {
       defaultValue: 'user',
       required: true,
       hasMany: true,
+    },
+    {
+      name: 'emailVerified',
+      type: 'date',
     },
   ],
 }
