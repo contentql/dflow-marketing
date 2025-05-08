@@ -60,7 +60,7 @@ export default function RootLayout({
           `min-h-screen bg-background text-foreground antialiased font-heading overflow-x-hidden !scrollbar-hide ${geistSans.className} ${geistMono.variable}`,
         )}
       >
-        <Toaster richColors theme="dark" position="top-right" />
+        <Toaster richColors theme="dark" position="bottom-right" />
         <Provider> {children}</Provider>
       </body>
     </html>

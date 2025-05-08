@@ -57,25 +57,25 @@
     --accent-foreground: 240 42.86% 8.24%;
     --destructive: 0 73.46% 41.37%;
     --destructive-foreground: 0 0% 100%;
-    
+
     --border: 215 25% 27%;
     --input: 215 25% 27%;
     --ring: 291 63.72% 42.16%;
 
-   --radius: 0.75rem;
-    
-   --chart-1: 220 70% 50%; /* Blue */
-   --chart-2: 340 75% 55%; /* Pink */
-   --chart-3: 30 80% 55%; /* Orange */
-   --chart-4: 280 65% 60%; /* Violet */
-   --chart-5: 160 60% 45%; /* Teal */
-   --chart-6: 0 85% 50%; /* Red */
-   --chart-7: 45 85% 55%; /* Yellow */
-   --chart-8: 200 75% 50%; /* Cyan */
-   --chart-9: 120 70% 50%; /* Green */
-   --chart-10: 260 65% 55%; /* Purple */
+    --radius: 0.75rem;
 
-   --sidebar-background: 217 33% 17%;
+    --chart-1: 220 70% 50%; /* Blue */
+    --chart-2: 340 75% 55%; /* Pink */
+    --chart-3: 30 80% 55%; /* Orange */
+    --chart-4: 280 65% 60%; /* Violet */
+    --chart-5: 160 60% 45%; /* Teal */
+    --chart-6: 0 85% 50%; /* Red */
+    --chart-7: 45 85% 55%; /* Yellow */
+    --chart-8: 200 75% 50%; /* Cyan */
+    --chart-9: 120 70% 50%; /* Green */
+    --chart-10: 260 65% 55%; /* Purple */
+
+    --sidebar-background: 217 33% 17%;
     --sidebar-foreground: 240 100% 90.78%;
     --sidebar-primary: 262 51.87% 47.25%;
     --sidebar-primary-foreground: 0 0% 100%;
@@ -83,6 +83,12 @@
     --sidebar-accent-foreground: 0 0% 87.84%;
     --sidebar-border: 240 24.49% 38.43%;
     --sidebar-ring: 291 63.72% 42.16%;
+
+    --success-foreground: 142 77% 73%;
+    --danger-foreground: 0 91% 71%;
+
+    --success: 143 64% 24%;
+    --danger: 0 70% 35%;
   }
 }
 
@@ -91,7 +97,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--foreground)/0.1);
+  background: hsl(var(--foreground) / 0.1);
   border-radius: 10px;
 }
 
@@ -110,7 +116,7 @@ img {
 }
 
 .link::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -127,18 +133,22 @@ img {
 }
 
 .companies::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0%;
   left: 0;
   height: 1px;
   width: 100%;
   color: rgb(48, 48, 48);
-  background: radial-gradient(50% 56400% at 50% 100%, rgb(34, 41, 57) 0%, rgba(169, 163, 194, 0) 100%);
+  background: radial-gradient(
+    50% 56400% at 50% 100%,
+    rgb(34, 41, 57) 0%,
+    rgba(169, 163, 194, 0) 100%
+  );
 }
 
 .companies::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 50%;
@@ -151,9 +161,13 @@ img {
 }
 
 .footer::before {
-  background: radial-gradient(50% 56400% at 50% 100%, rgb(34, 44, 57) 0%, rgba(169, 163, 194, 0) 100%);
+  background: radial-gradient(
+    50% 56400% at 50% 100%,
+    rgb(34, 44, 57) 0%,
+    rgba(169, 163, 194, 0) 100%
+  );
   top: 0;
-  content: "";
+  content: '';
   height: 1px;
   left: 0;
   position: absolute;
