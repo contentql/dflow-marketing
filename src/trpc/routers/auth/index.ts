@@ -18,170 +18,163 @@ const payload = await getPayload({
 })
 
 export const authRouter = router({
-  signUp: publicProcedure
-    .input(SignUpSchema)
-    .mutation(async ({ input, ctx }) => {
-      const { username, email, password } = input
+  signUp: publicProcedure.input(SignUpSchema).mutation(async ({ input, ctx }) => {
+    console.log('entered to signUp route')
+    const { username, email, password } = input
 
-      try {
-        // Check if email already exists
-        const emailExists = await payload.find({
-          collection: 'users',
-          where: {
-            email: {
-              equals: email,
-            },
+    try {
+      // Check if email already exists
+      const emailExists = await payload.find({
+        collection: 'users',
+        where: {
+          email: {
+            equals: email,
           },
-        })
+        },
+      })
 
-        if (emailExists.totalDocs > 0) {
-          throw new TRPCError({
-            code: 'CONFLICT',
-            message: `${email} already exists`,
-          })
-        }
-
-        // Check if username already exists
-        const usernameExists = await payload.find({
-          collection: 'users',
-          where: {
-            username: {
-              equals: username,
-            },
-          },
-        })
-
-        if (usernameExists.totalDocs > 0) {
-          throw new TRPCError({
-            code: 'CONFLICT',
-            message: `username ${username} already exists`,
-          })
-        }
-
-        const result = await payload.create({
-          collection: 'users',
-          data: {
-            username,
-            email,
-            password,
-            role: ['user'],
-          },
-          locale: undefined,
-          fallbackLocale: undefined,
-          overrideAccess: true,
-          disableVerificationEmail: false, // Set to false if you want to enable verification email
-        })
-
-        return result
-      } catch (error: any) {
-        console.error('Error signing up:', error)
+      if (emailExists.totalDocs > 0) {
         throw new TRPCError({
-          code: 'INTERNAL_SERVER_ERROR',
-          message: error.message,
+          code: 'CONFLICT',
+          message: `${email} already exists`,
         })
       }
-    }),
 
-  signIn: publicProcedure
-    .input(SignInSchema)
-    .mutation(async ({ input, ctx }) => {
-      const { email, password } = input
-
-      try {
-        const result = await payload.login({
-          collection: 'users',
-          data: {
-            email,
-            password,
+      // Check if username already exists
+      const usernameExists = await payload.find({
+        collection: 'users',
+        where: {
+          username: {
+            equals: username,
           },
-          depth: 2,
-          locale: undefined,
-          fallbackLocale: undefined,
-          overrideAccess: false,
-          showHiddenFields: true,
-        })
+        },
+      })
 
-        const cookieStore = await cookies()
-        cookieStore.set('payload-token', result.token || '', {
-          httpOnly: true,
-          secure: process.env.NODE_ENV !== 'development',
-          maxAge: 60 * 60 * 24 * 7,
-          path: '/',
-        })
-
-        return result
-      } catch (error: any) {
-        console.error('Error signing in:', error)
+      if (usernameExists.totalDocs > 0) {
         throw new TRPCError({
-          code: 'UNAUTHORIZED',
-          message: 'Invalid email or password',
+          code: 'CONFLICT',
+          message: `username ${username} already exists`,
         })
       }
-    }),
 
-  forgotPassword: publicProcedure
-    .input(GenerateTokenSchema)
-    .mutation(async ({ input }) => {
-      const { email } = input
+      const result = await payload.create({
+        collection: 'users',
+        data: {
+          username,
+          email,
+          password,
+          role: ['user'],
+        },
+        locale: undefined,
+        fallbackLocale: undefined,
+        overrideAccess: true,
+        disableVerificationEmail: false, // Set to false if you want to enable verification email
+      })
 
-      try {
-        const token = await payload.forgotPassword({
-          collection: 'users',
-          data: {
-            email,
+      return result
+    } catch (error: any) {
+      console.error('Error signing up:', error)
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: error.message,
+      })
+    }
+  }),
+
+  signIn: publicProcedure.input(SignInSchema).mutation(async ({ input, ctx }) => {
+    const { email, password } = input
+
+    try {
+      const result = await payload.login({
+        collection: 'users',
+        data: {
+          email,
+          password,
+        },
+        depth: 2,
+        locale: undefined,
+        fallbackLocale: undefined,
+        overrideAccess: false,
+        showHiddenFields: true,
+      })
+
+      const cookieStore = await cookies()
+      cookieStore.set('payload-token', result.token || '', {
+        httpOnly: true,
+        secure: process.env.NODE_ENV !== 'development',
+        maxAge: 60 * 60 * 24 * 7,
+        path: '/',
+      })
+
+      return result
+    } catch (error: any) {
+      console.error('Error signing in:', error)
+      throw new TRPCError({
+        code: 'UNAUTHORIZED',
+        message: 'Invalid email or password',
+      })
+    }
+  }),
+
+  forgotPassword: publicProcedure.input(GenerateTokenSchema).mutation(async ({ input }) => {
+    const { email } = input
+
+    try {
+      const token = await payload.forgotPassword({
+        collection: 'users',
+        data: {
+          email,
+        },
+      })
+
+      const { totalDocs: usersCount } = await payload.find({
+        collection: 'users',
+        where: {
+          email: {
+            equals: email,
           },
-        })
+        },
+      })
 
-        const { totalDocs: usersCount } = await payload.find({
-          collection: 'users',
-          where: {
-            email: {
-              equals: email,
-            },
-          },
-        })
-
-        if (!usersCount) {
-          throw new TRPCError({
-            code: 'NOT_FOUND',
-            message: 'User not found',
-          })
-        }
-
-        return { success: true, token }
-      } catch (error: any) {
-        console.error('Error during forgot password:', error)
+      if (!usersCount) {
         throw new TRPCError({
-          code: 'INTERNAL_SERVER_ERROR',
-          message: error.message,
+          code: 'NOT_FOUND',
+          message: 'User not found',
         })
       }
-    }),
 
-  resetPassword: publicProcedure
-    .input(ResetPasswordSchema)
-    .mutation(async ({ input }) => {
-      const { password, token } = input
+      return { success: true, token }
+    } catch (error: any) {
+      console.error('Error during forgot password:', error)
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: error.message,
+      })
+    }
+  }),
 
-      try {
-        const result = await payload.resetPassword({
-          collection: 'users',
-          data: {
-            password,
-            token,
-          },
-          overrideAccess: true,
-        })
+  resetPassword: publicProcedure.input(ResetPasswordSchema).mutation(async ({ input }) => {
+    const { password, token } = input
 
-        return result
-      } catch (error: any) {
-        console.error('Error resetting password:', error)
-        throw new TRPCError({
-          code: 'INTERNAL_SERVER_ERROR',
-          message: error.message,
-        })
-      }
-    }),
+    try {
+      const result = await payload.resetPassword({
+        collection: 'users',
+        data: {
+          password,
+          token,
+        },
+        overrideAccess: true,
+      })
+
+      return result
+    } catch (error: any) {
+      console.error('Error resetting password:', error)
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: error.message,
+      })
+    }
+  }),
 
   //   unlock: publicProcedure.input(UnlockSchema).mutation(async ({ input }) => {
   //     const { email } = input
@@ -226,32 +219,30 @@ export const authRouter = router({
   //       }
   //     }),
 
-  verifyEmail: publicProcedure
-    .input(VerifyEmailSchema)
-    .query(async ({ input }) => {
-      const { token, userId } = input
+  verifyEmail: publicProcedure.input(VerifyEmailSchema).query(async ({ input }) => {
+    const { token, userId } = input
 
-      try {
-        const result = await payload.verifyEmail({
-          collection: 'users',
-          token,
-        })
+    try {
+      const result = await payload.verifyEmail({
+        collection: 'users',
+        token,
+      })
 
-        await payload.update({
-          collection: 'users',
-          id: userId,
-          data: {
-            emailVerified: new Date().toDateString(),
-          },
-        })
+      await payload.update({
+        collection: 'users',
+        id: userId,
+        data: {
+          emailVerified: new Date().toDateString(),
+        },
+      })
 
-        return { success: result }
-      } catch (error: any) {
-        console.error('Error verifying email:', error)
-        throw new TRPCError({
-          code: 'INTERNAL_SERVER_ERROR',
-          message: error.message,
-        })
-      }
-    }),
+      return { success: result }
+    } catch (error: any) {
+      console.error('Error verifying email:', error)
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: error.message,
+      })
+    }
+  }),
 })

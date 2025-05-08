@@ -19,6 +19,9 @@ export const env = createEnv({
     S3_SECRET_ACCESS_KEY: z.string().min(1),
     S3_BUCKET: z.string().min(1),
     S3_REGION: z.string().min(1),
+    RESEND_API_KEY: z.string().optional(),
+    RESEND_SENDER_EMAIL: z.string().optional(),
+    RESEND_SENDER_NAME: z.string().optional(),
   },
   client: { NEXT_PUBLIC_WEBSITE_URL: z.string().url() },
   runtimeEnv: {
@@ -33,5 +36,8 @@ export const env = createEnv({
     S3_SECRET_ACCESS_KEY: process.env.S3_SECRET_ACCESS_KEY,
     S3_BUCKET: process.env.S3_BUCKET,
     S3_REGION: process.env.S3_REGION,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    RESEND_SENDER_EMAIL: process.env.RESEND_SENDER_EMAIL,
+    RESEND_SENDER_NAME: process.env.RESEND_SENDER_NAME,
   },
 })

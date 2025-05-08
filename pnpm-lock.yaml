@@ -20,6 +20,9 @@ importers:
       '@payloadcms/db-mongodb':
         specifier: 3.34.0
         version: 3.34.0(@aws-sdk/credential-providers@3.787.0)(payload@3.34.0(graphql@16.10.0)(typescript@5.7.3))
+      '@payloadcms/email-resend':
+        specifier: 3.34.0
+        version: 3.34.0(payload@3.34.0(graphql@16.10.0)(typescript@5.7.3))
       '@payloadcms/next':
         specifier: 3.34.0
         version: 3.34.0(@types/react@19.0.12)(graphql@16.10.0)(monaco-editor@0.52.2)(next@15.2.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.77.4))(payload@3.34.0(graphql@16.10.0)(typescript@5.7.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.7.3)
@@ -1180,6 +1183,12 @@ packages:
 
   '@payloadcms/email-nodemailer@3.34.0':
     resolution: {integrity: sha512-+gQE6txrEqTvvvyDjaFFeuu3D9H8aIWBrYgOf8LawXMBgm0TB7ryTqdm/wOsOEPde9QuMEAplG90lo6YzGpOvQ==}
+    engines: {node: ^18.20.2 || >=20.9.0}
+    peerDependencies:
+      payload: 3.34.0
+
+  '@payloadcms/email-resend@3.34.0':
+    resolution: {integrity: sha512-gy0QJD08J6V1Y/QoVjqvHnSd1GreL2wuBSubYIIsNPbxKzSxDNvsDfaFP9VnFgecRTa5+qpsNKIkdZE6lO/AyQ==}
     engines: {node: ^18.20.2 || >=20.9.0}
     peerDependencies:
       payload: 3.34.0
@@ -7068,6 +7077,10 @@ snapshots:
   '@payloadcms/email-nodemailer@3.34.0(payload@3.34.0(graphql@16.10.0)(typescript@5.7.3))':
     dependencies:
       nodemailer: 6.9.16
+      payload: 3.34.0(graphql@16.10.0)(typescript@5.7.3)
+
+  '@payloadcms/email-resend@3.34.0(payload@3.34.0(graphql@16.10.0)(typescript@5.7.3))':
+    dependencies:
       payload: 3.34.0(graphql@16.10.0)(typescript@5.7.3)
 
   '@payloadcms/graphql@3.34.0(graphql@16.10.0)(payload@3.34.0(graphql@16.10.0)(typescript@5.7.3))(typescript@5.7.3)':

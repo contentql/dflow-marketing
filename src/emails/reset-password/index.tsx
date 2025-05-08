@@ -1,4 +1,3 @@
-import { env } from '@env'
 import {
   Body,
   Button,
@@ -14,18 +13,16 @@ import {
   Text,
   render,
 } from '@react-email/components'
+import { env } from 'env'
 
 interface ResetPasswordEmailProps {
   userFirstName: string
   resetPasswordLink: string
 }
 
-const baseUrl = env.PAYLOAD_URL
+const baseUrl = env.NEXT_PUBLIC_WEBSITE_URL
 
-const ResetPasswordTemplate = ({
-  userFirstName,
-  resetPasswordLink,
-}: ResetPasswordEmailProps) => {
+const ResetPasswordTemplate = ({ userFirstName, resetPasswordLink }: ResetPasswordEmailProps) => {
   return (
     <Html>
       <Head />
@@ -36,10 +33,10 @@ const ResetPasswordTemplate = ({
             <Row style={header}>
               <Column>
                 <Img
-                  src={`${env.PAYLOAD_URL}/favicon.ico`}
-                  width='40'
-                  height='40'
-                  alt='ContentQL'
+                  src={`${env.NEXT_PUBLIC_WEBSITE_URL}/favicon.ico`}
+                  width="40"
+                  height="40"
+                  alt="ContentQL"
                 />
               </Column>
               <Column>
@@ -52,17 +49,17 @@ const ResetPasswordTemplate = ({
             <Text style={infoText}>Hello, {userFirstName}</Text>
 
             <Text style={infoText}>
-              Someone recently requested a password change for your account. If
-              this was you, you can set a new password here:
+              Someone recently requested a password change for your account. If this was you, you
+              can set a new password here:
             </Text>
 
             <Button href={resetPasswordLink} style={button}>
               Rest password
             </Button>
 
-            <Text className='dark:text-zinc-300'>
-              If you don&apos;t want to change your password or didn&apos;t
-              request this, just ignore and delete this message.
+            <Text className="dark:text-zinc-300">
+              If you don&apos;t want to change your password or didn&apos;t request this, just
+              ignore and delete this message.
             </Text>
           </Section>
         </Container>

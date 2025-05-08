@@ -44,11 +44,11 @@ export const VerifyEmailTemplate = ({
                   src={`${env.NEXT_PUBLIC_WEBSITE_URL}/favicon.ico`}
                   width="40"
                   height="40"
-                  alt="ContentQL"
+                  alt="dFlow"
                 />
               </Column>
               <Column>
-                <Text style={title}>ContentQL</Text>
+                <Text style={title}>dFlow</Text>
               </Column>
             </Row>
             <Hr style={hr} />

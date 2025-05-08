@@ -398,8 +398,8 @@ const Images = {
           y2="395.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#744ED0" />
-          <stop offset="1" stop-color="white" />
+          <stop stopColor="#744ED0" />
+          <stop offset="1" stopColor="white" />
         </linearGradient>
       </defs>
     </svg>
