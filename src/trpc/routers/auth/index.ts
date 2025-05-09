@@ -19,7 +19,6 @@ const payload = await getPayload({
 
 export const authRouter = router({
   signUp: publicProcedure.input(SignUpSchema).mutation(async ({ input, ctx }) => {
-    console.log('entered to signUp route')
     const { username, email, password } = input
 
     try {

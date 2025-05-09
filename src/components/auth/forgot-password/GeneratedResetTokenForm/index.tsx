@@ -38,11 +38,7 @@ const GenerateResetTokenForm: React.FC = () => {
   }
 
   return (
-    <main
-      id="content"
-      role="main"
-      className="bg-base-100 flex min-h-screen w-full items-center justify-center"
-    >
+    <main id="content" role="main" className="flex w-full items-center justify-center">
       <div className="mx-auto w-full max-w-md drop-shadow-2xl  md:p-8">
         <div className="">
           {isGeneratePasswordSuccess ? (

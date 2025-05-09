@@ -51,7 +51,6 @@ const SignUpForm: React.FC = () => {
   })
 
   const onSubmit = async (data: SignUpFormData) => {
-    console.log('onSubmit')
     const { confirmPassword, ...userData } = data
 
     signUpMutation({

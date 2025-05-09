@@ -1,9 +1,12 @@
 import { Toaster } from '@/components/ui/sonner'
+import { UserProvider } from '@/context/UserContext'
 import { cn } from '@/lib/cn'
 import Provider from '@/trpc/Provider'
+import { getCurrentUser } from '@/utils/getCurrentUser'
 import { env } from 'env'
 import { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import { headers } from 'next/headers'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -48,11 +51,13 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 })
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const headersList = await headers()
+  const user = await getCurrentUser(headersList)
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body
@@ -61,7 +66,9 @@ export default function RootLayout({
         )}
       >
         <Toaster richColors theme="dark" position="bottom-right" />
-        <Provider> {children}</Provider>
+        <UserProvider initialUser={user}>
+          <Provider> {children}</Provider>
+        </UserProvider>
       </body>
     </html>
   )

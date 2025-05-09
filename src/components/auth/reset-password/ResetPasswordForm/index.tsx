@@ -49,7 +49,7 @@ const ResetPasswordForm: React.FC<Props> = ({ token }) => {
   }
 
   return (
-    <main className="bg-base-100 flex h-screen w-full items-center justify-center">
+    <main className="flex w-full items-center justify-center">
       <div className="w-full max-w-md  drop-shadow-2xl">
         <div>
           {isResetPasswordSuccess ? (

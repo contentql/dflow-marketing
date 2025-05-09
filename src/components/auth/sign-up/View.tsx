@@ -2,7 +2,7 @@ import SignUpForm from './SignUpForm'
 
 const SignUpView: React.FC = () => {
   return (
-    <div className='flex min-h-screen'>
+    <div className="flex">
       <SignUpForm />
     </div>
   )
