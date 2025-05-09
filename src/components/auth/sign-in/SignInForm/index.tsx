@@ -10,11 +10,13 @@ import { LabelInputContainer } from '../../common/fields'
 import { Alert, AlertDescription } from '@/components/common/Alert'
 import Button from '@/components/common/Button'
 import { Input } from '@/components/common/Input'
+import { useUser } from '@/context/UserContext'
 import { trpc } from '@/trpc/client'
 import { SignInSchema } from '@/trpc/routers/auth/validator'
 
 const SignInForm: React.FC = () => {
   const router = useRouter()
+  const { setUser } = useUser()
 
   const form = useForm<z.infer<typeof SignInSchema>>({
     resolver: zodResolver(SignInSchema),
@@ -39,8 +41,9 @@ const SignInForm: React.FC = () => {
     isSuccess: isSignInSuccess,
   } = trpc.auth.signIn.useMutation({
     onSuccess: (result) => {
-      const isAdmin = result?.user?.role?.includes('admin')
+      setUser(result.user)
 
+      const isAdmin = result?.user?.role?.includes('admin')
       if (isAdmin) {
         router.push('/admin')
       } else {
