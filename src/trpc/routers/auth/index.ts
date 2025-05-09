@@ -64,10 +64,6 @@ export const authRouter = router({
           password,
           role: ['user'],
         },
-        locale: undefined,
-        fallbackLocale: undefined,
-        overrideAccess: true,
-        disableVerificationEmail: false, // Set to false if you want to enable verification email
       })
 
       return result

@@ -18,7 +18,7 @@ const VerifyEmailPage = async ({
   }
 
   return (
-    <div className='flex min-h-screen items-center justify-center'>
+    <div className="flex items-center justify-center">
       <VerifyEmail token={token} userId={userId} />
     </div>
   )

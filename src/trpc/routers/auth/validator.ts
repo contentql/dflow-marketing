@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 export const SignUpSchema = z.object({
-  username: z.string().min(1, { message: 'Username is required' }),
+  username: z.string().min(3, { message: 'Username is required' }),
   email: z
     .string()
     .min(1, { message: 'E-mail is required' })
@@ -14,10 +14,7 @@ export const SignUpSchema = z.object({
 })
 
 export const SignInSchema = z.object({
-  email: z
-    .string()
-    .min(1, { message: 'Email is required' })
-    .email({ message: 'Email is invalid' }),
+  email: z.string().min(1, { message: 'Email is required' }).email({ message: 'Email is invalid' }),
   password: z
     .string()
     .min(1, { message: 'Password is required' })
@@ -29,9 +26,7 @@ export const GenerateTokenSchema = z.object({
 })
 
 export const ResetPasswordSchema = z.object({
-  password: z
-    .string()
-    .min(8, { message: 'Password must be at least 8 characters long' }),
+  password: z.string().min(8, { message: 'Password must be at least 8 characters long' }),
   token: z.string(),
 })
 
