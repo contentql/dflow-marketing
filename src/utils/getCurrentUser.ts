@@ -33,7 +33,7 @@ export const getCurrentUser = async (headers?: Headers): Promise<User | null> =>
       const { user } = await res.json()
 
       return user
-    } catch (error) {
+    } catch {
       throw new Error('not authenticated')
     }
   } else {

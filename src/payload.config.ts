@@ -10,11 +10,11 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
-import { Blogs } from './collections/Blogs'
-import { Changelog } from './collections/Changelog'
-import { Media } from './collections/Media'
-import { Tags } from './collections/Tags'
-import { Users } from './collections/Users'
+import { Blogs } from './payload/collections/Blogs'
+import { Changelog } from './payload/collections/Changelog'
+import { Media } from './payload/collections/Media'
+import { Tags } from './payload/collections/Tags'
+import { Users } from './payload/collections/Users'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
