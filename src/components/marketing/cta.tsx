@@ -51,14 +51,11 @@ const CTA = () => {
             entire DevOps workflow.
           </p>
           <div className="flex flex-row gap-4 mt-4 items-center justify-center">
-            <Link
-              href="https://demo.dflow.sh/templates/compose?templateId=68122108205912cbc9397ec8"
-              target="_blank"
-            >
+            <Link href="https://cloud.dflow.sh/sign-up" target="_blank">
               <DeployButton />
             </Link>
-            <Link target="_blank" href="https://demo.dFlow.sh">
-              <Button size="lg">View Demo</Button>
+            <Link target="_blank" href="https://cloud.dflow.sh">
+              <Button size="lg">Cloud</Button>
             </Link>
           </div>
         </div>

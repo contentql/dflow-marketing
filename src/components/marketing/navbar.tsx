@@ -47,8 +47,8 @@ const Navbar = () => {
                 Discord
               </Button>
             </Link>
-            <Link href="https://demo.dFlow.sh" target="_blank" className="hidden lg:block">
-              <Button>View Demo</Button>
+            <Link href="https://cloud.dflow.sh" target="_blank" className="hidden lg:block">
+              <Button>Cloud</Button>
             </Link>
 
             <MobileMenu />

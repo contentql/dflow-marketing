@@ -1,8 +1,8 @@
 'use client'
 
+import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { NAV_LINKS } from 'constants/links'
-import { Button } from '@/components/ui/button'
 import { Menu } from 'lucide-react'
 import Link from 'next/link'
 
@@ -42,8 +42,8 @@ const MobileMenu = () => {
                 Discord
               </Button>
             </Link>
-            <Link href="https://demo.dFlow.sh" target="_blank" className="w-full">
-              <Button className="w-full">View Demo</Button>
+            <Link href="https://cloud.dflow.sh" target="_blank" className="w-full">
+              <Button className="w-full">Cloud</Button>
             </Link>
           </div>
         </nav>

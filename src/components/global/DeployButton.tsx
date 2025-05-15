@@ -16,7 +16,7 @@ export default function DeployButton() {
       </span>
 
       {/* Text with enhanced typography */}
-      <span className="relative font-semibold tracking-wide">Deploy on dFlow</span>
+      <span className="relative font-semibold tracking-wide">Join dFlow</span>
 
       {/* Bottom highlight bar */}
       <span className="absolute bottom-0 left-1/2 h-0.5 w-full -translate-x-1/2 bg-[hsl(0,0%,100%)] opacity-0 transition-all duration-500 group-hover:opacity-70"></span>

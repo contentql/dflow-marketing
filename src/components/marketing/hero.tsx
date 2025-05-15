@@ -58,7 +58,7 @@ const Hero = () => {
           <Container delay={0.25} className="z-20">
             <div className="flex justify-center mt-6">
               <Link
-                href="https://demo.dflow.sh/templates/compose?templateId=68122108205912cbc9397ec8"
+                href="https://cloud.dflow.sh/sign-up"
                 target="_blank"
                 className="flex items-center gap-2 group"
               >
